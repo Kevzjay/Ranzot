@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="card.css">
+    <title>My Collection</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header">
+                    <h1>My Collection</h1>
+                </div>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+
+
+                <div class="container">
+                    <input type="radio" name="slide" id="c1" checked>
+                    <label for="c1" class="card">
+                        <div class="row">
+                            <div class="icon">1</div>
+                            <div class="description mt-2">
+                                <h4>Psst!</h4>
+                                <p>Inaasar ka lang 
+                                    di ka bilog
+                                </p>
+                            </div>
+                        </div>
+                    </label>
+                    <input type="radio" name="slide" id="c2">
+                    <label for="c2" class="card">
+                        <div class="row">
+                            <div class="icon">2</div>
+                            <div class="description mt-2">
+                                <h4>Eyyy!!</h4>
+                                <p>Cute mo dito😍</p>
+                            </div>
+                        </div>
+                    </label>
+                    <input type="radio" name="slide" id="c3">
+                    <label for="c3" class="card">
+                        <div class="row">
+                            <div class="icon">3</div>
+                            <div class="description mt-2">
+                                <h4>Cute Eyes</h4>
+                                <p>Kung pwede lang idilat mo yan
+                                    pag titignan moko eh
+                                </p>
+                            </div>
+                        </div>
+                    </label>
+                    <input type="radio" name="slide" id="c4">
+                    <label for="c4" class="card">
+                        <div class="row">
+                            <div class="icon">4</div>
+                            <div class="description mt-2">
+                                <h4>Cute Smile</h4>
+                                <p>Pwede saken ka lng ngumiti? Joke🤭</p>
+                            </div>
+                        </div>
+                    </label>
+
+                    <input type="radio" name="slide" id="c5">
+                    <label for="c5" class="card">
+                        <div class="row">
+                            <div class="icon">4</div>
+                            <div class="description mt-2">
+                                <h4>Haphearts Perds</h4>
+                                <p>Mas okay ata muka ko nanjan kesa yang half heart mo</p>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bg-music" autoplay loop>
+        <source src="images/tulip-mo.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let audio = document.getElementById("bg-music");
+
+            // Attempt to autoplay
+            let playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log("Autoplay started successfully.");
+                }).catch(() => {
+                    console.log("Autoplay blocked. Waiting for user interaction...");
+                });
+            }
+        });
+
+        // Play audio on first user interaction (click anywhere)
+        window.addEventListener("click", function () {
+            let audio = document.getElementById("bg-music");
+            if (audio.paused) {
+                audio.play();
+                console.log("Audio started after user interaction.");
+            }
+        }, { once: true });
+    </script>
+
+
+
+</body>
+
+</html>
