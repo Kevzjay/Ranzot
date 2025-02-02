@@ -26,7 +26,7 @@ body {
 
 .card {
     width: 70px;
-    height: 120hv; /* Fixed height */
+    height: 10hv; /* Fixed height */
     border-radius: .75rem;
     background-size: cover; /* Ensures the image fills the card without stretching */
     background-position: center; /* Centers the image */
@@ -48,6 +48,8 @@ body {
     color: white;
     display: flex;
     flex-wrap: nowrap;
+    border-radius: 50%;
+    
 }
 
 .card>.row>.icon {
@@ -75,14 +77,14 @@ body {
 }
 
 .description p {
-    color: #ff9a3c;
+    color: #62c902;
     padding-top: 5px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .description h4 {
     text-transform: uppercase;
-    color: rgb(177, 174, 14);
+    color: #17cce4;
 }
 
 input {
@@ -91,6 +93,7 @@ input {
 
 input:checked+label {
     width: 600px;
+    
 }
 
 input:checked+label .description {
@@ -116,6 +119,10 @@ input:checked+label .description {
 
 .card[for="c5"] {
     background-image: url('images/5.jpeg');
+}
+
+.card[for="c6"] {
+    background-image: url('images/6.jpeg');
 }
 
 h1{
