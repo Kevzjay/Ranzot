@@ -125,6 +125,10 @@ input:checked+label .description {
     background-image: url('images/7.jpeg');
 }
 
+.card[for="c7"] {
+    background-image: url('images/8.jpeg');
+}
+
 h1{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
