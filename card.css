@@ -26,18 +26,22 @@ body {
 
 .card {
     width: 70px;
-    height: 10hv; /* Fixed height */
+    height: 10hv;
+    /* Fixed height */
     border-radius: .75rem;
-    background-size: cover; /* Ensures the image fills the card without stretching */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-size: cover;
+    /* Ensures the image fills the card without stretching */
+    background-position: center;
+    /* Centers the image */
+    background-repeat: no-repeat;
+    /* Prevents the image from repeating */
     cursor: pointer;
     overflow: hidden;
     margin: 0 10px;
     display: flex;
     align-items: flex-end;
-    transition: .6s cubic-bezier(.28,-0.03,0,.99);
-    box-shadow: 0px 10px 30px -5px rgba(0,0,0,0.8);
+    transition: .6s cubic-bezier(.28, -0.03, 0, .99);
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.8);
 }
 
 
@@ -49,7 +53,7 @@ body {
     display: flex;
     flex-wrap: nowrap;
     border-radius: 50%;
-    
+
 }
 
 .card>.row>.icon {
@@ -77,7 +81,7 @@ body {
 }
 
 .description p {
-     background-color: rgba(34, 34, 51, 0.5);
+    background-color: rgba(34, 34, 51, 0.5);
     border-radius: 10px;
     color: #62c902;
     padding-top: 5px;
@@ -96,7 +100,7 @@ input {
 
 input:checked+label {
     width: 600px;
-    
+
 }
 
 input:checked+label .description {
@@ -132,12 +136,308 @@ input:checked+label .description {
     background-image: url('images/8.jpeg');
 }
 
-h1{
+h1 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 .header {
-    text-align: center; /* Centers the text inside the header */
-    margin-bottom: 20px; /* Space between the header and cards */
-    font-size: 2rem; /* Adjust title size as needed */
-    
+    text-align: center;
+    /* Centers the text inside the header */
+    margin-bottom: 20px;
+    /* Space between the header and cards */
+    font-size: 2rem;
+    /* Adjust title size as needed */
+
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #eeeeea;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container {
+    height: 350px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+}
+
+.card {
+    width: 50px;
+    height: 10vh;
+    /* Fixed height */
+    border-radius: 1.75rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    overflow: hidden;
+    margin: 0 10px;
+    display: flex;
+    align-items: flex-end;
+    transition: .6s cubic-bezier(.28, -0.03, 0, .99);
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.8);
+}
+
+.card>.row {
+    color: white;
+    display: flex;
+    flex-wrap: nowrap;
+    border-radius: 50%;
+}
+
+.card>.row>.icon {
+    background: #223;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+.card>.row>.description {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    height: 80px;
+    width: 520px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .3s ease, transform .3s ease;
+    transition-delay: .3s;
+}
+
+.description p {
+    background-color: rgba(34, 34, 51, 0.5);
+    border-radius: 10px;
+    color: #e9d205;
+    padding: 5px 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: inline-block;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.description h4 {
+    text-transform: uppercase;
+    color: #17cce4;
+}
+
+input {
+    display: none;
+}
+
+input:checked+label {
+    width: 600px;
+}
+
+input:checked+label .description {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.card[for="c1"] {
+    background-image: url('images/1.jpeg');
+}
+
+.card[for="c2"] {
+    background-image: url('images/2.jpeg');
+}
+
+.card[for="c3"] {
+    background-image: url('images/3.jpeg');
+}
+
+.card[for="c4"] {
+    background-image: url('images/4.jpeg');
+}
+
+.card[for="c5"] {
+    background-image: url('images/5.jpeg');
+}
+
+.card[for="c6"] {
+    background-image: url('images/6.jpeg');
+}
+
+h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+/* Comment Section Styles */
+.comment-section {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comment-section h2 {
+    text-align: center;
+    color: #223;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+/* Comment Tabs */
+.comment-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.comment-tabs button {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: none;
+    color: #666;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.comment-tabs button.active {
+    color: #17cce4;
+    border-bottom: 2px solid #17cce4;
+}
+
+.comment-tabs button:hover {
+    color: #17cce4;
+}
+
+/* Comment List */
+#commentsDisplay {
+    margin-top: 20px;
+}
+
+.comment {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-color: #ccc;
+    /* Placeholder for avatar */
+}
+
+.img-avatar{
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.comment-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #223;
+}
+
+.comment-header span {
+    margin-left: 10px;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.comment-text {
+    margin: 0;
+    color: #333;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.comment-actions {
+    margin-top: 10px;
+}
+
+.comment-actions button {
+    background-color: transparent;
+    border: none;
+    color: #666;
+    font-size: 0.875rem;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.comment-actions button:hover {
+    color: #17cce4;
+}
+
+/* Comment Form */
+#commentForm {
+    margin-top: 20px;
+}
+
+#commentForm textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    resize: vertical;
+    font-size: 0.875rem;
+}
+
+#commentForm button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #17cce4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#commentForm button:hover {
+    background-color: #149fb3;
 }
