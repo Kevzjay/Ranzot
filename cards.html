@@ -14,27 +14,25 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="header">
-                    <h1>My Favorite</h1>
+                    <h1>My Collection</h1>
                 </div>
             </div>
             <div class="col-md-12 d-flex justify-content-center">
-
-
                 <div class="container">
+                    <!-- Audio Cards -->
                     <input type="radio" name="slide" id="c1" checked>
-                    <label for="c1" class="card">
+                    <label for="c1" class="card" data-audio="images/audio1.mp3">
                         <div class="row">
                             <div class="icon">1</div>
                             <div class="description mt-2">
                                 <h4>Psst!</h4>
-                                <p>Inaasar ka lang
-                                    di ka bilog
-                                </p>
+                                <p>Inaasar ka lang di ka bilog</p>
                             </div>
                         </div>
                     </label>
+
                     <input type="radio" name="slide" id="c2">
-                    <label for="c2" class="card">
+                    <label for="c2" class="card" data-audio="images/audio2.mp3">
                         <div class="row">
                             <div class="icon">2</div>
                             <div class="description mt-2">
@@ -43,20 +41,20 @@
                             </div>
                         </div>
                     </label>
+
                     <input type="radio" name="slide" id="c3">
-                    <label for="c3" class="card">
+                    <label for="c3" class="card" data-audio="images/audio3.mp3">
                         <div class="row">
                             <div class="icon">3</div>
                             <div class="description mt-2">
                                 <h4>Cute Eyes</h4>
-                                <p>Kung pwede lang idilat mo yan
-                                    pag titignan moko eh
-                                </p>
+                                <p>Kung pwede lang idilat mo yan pag titignan moko eh</p>
                             </div>
                         </div>
                     </label>
+
                     <input type="radio" name="slide" id="c4">
-                    <label for="c4" class="card">
+                    <label for="c4" class="card" data-audio="images/audio4.mp3">
                         <div class="row">
                             <div class="icon">4</div>
                             <div class="description mt-2">
@@ -67,7 +65,7 @@
                     </label>
 
                     <input type="radio" name="slide" id="c5">
-                    <label for="c5" class="card">
+                    <label for="c5" class="card" data-audio="images/audio5.mp3">
                         <div class="row">
                             <div class="icon">5</div>
                             <div class="description mt-2">
@@ -78,62 +76,168 @@
                     </label>
 
                     <input type="radio" name="slide" id="c6">
-                    <label for="c6" class="card">
+                    <label for="c6" class="card" data-audio="images/audio6.mp3">
                         <div class="row">
                             <div class="icon">6</div>
                             <div class="description mt-2">
-                                <h4>chubby face</h4>
-                                <p>Sorry na.. Dko na tuloy masabi ung fave word ko
-                                    na <strong style="color:rgb(176, 101, 247)">"Tingin?"</strong></p>
+                                <h4>Chubby Face</h4>
+                                <p>Sorry na.. Dko na tuloy masabi yung FAVE word ko na <strong
+                                        style="color:rgb(208, 253, 9)">"Tingin?"</strong></p>
                             </div>
                         </div>
                     </label>
+                </div>
+            </div>
 
-                    <input type="radio" name="slide" id="c7">
-                    <label for="c7" class="card">
-                        <div class="row">
-                            <div class="icon">6</div>
-                            <div class="description mt-2">
-                                <h4>hayss..</h4>
-                                <p>Pansin mo ba? Why does it feel like, i'm not needed yet?</p>
-                            </div>
-                        </div>
-                    </label>
+            <div class="col-12">
+                <!-- Comment Section -->
+                <div class="comment-section">
+                    <h2>Leave a Comment</h2>
+                    <form id="commentForm">
+                        <textarea id="commentInput" placeholder="Write your comment here..." required></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                    <div id="commentsDisplay">
+                       
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <audio id="bg-music" autoplay loop>
-        <source src="images/tulip-mo.mp3" type="audio/mpeg">
+        <source src="images/audio1.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
+
+
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            let audio = document.getElementById("bg-music");
+            const audioElement = document.getElementById("bg-music");
+            const radioButtons = document.querySelectorAll('input[name="slide"]');
 
-            // Attempt to autoplay
-            let playPromise = audio.play();
+            // Function to change audio when a card is selected
+            radioButtons.forEach(radio => {
+                radio.addEventListener("change", function () {
+                    if (this.checked) {
+                        const selectedLabel = document.querySelector(`label[for="${this.id}"]`);
+                        const newAudioSrc = selectedLabel.getAttribute("data-audio");
+
+                        if (newAudioSrc) {
+                            audioElement.src = `/${newAudioSrc}`; // Adjust path if needed
+                            audioElement.play();
+                        }
+                    }
+                });
+            });
+
+            // Handle autoplay issues
+            let playPromise = audioElement.play();
             if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    console.log("Autoplay started successfully.");
-                }).catch(() => {
+                playPromise.catch(() => {
                     console.log("Autoplay blocked. Waiting for user interaction...");
                 });
             }
-        });
 
-        // Play audio on first user interaction (click anywhere)
-        window.addEventListener("click", function () {
-            let audio = document.getElementById("bg-music");
-            if (audio.paused) {
-                audio.play();
-                console.log("Audio started after user interaction.");
+            // Play audio on first user interaction
+            window.addEventListener("click", function () {
+                if (audioElement.paused) {
+                    audioElement.play();
+                    console.log("Audio started after user interaction.");
+                }
+            }, { once: true });
+
+            // Load comments from Google Sheets (via Google Apps Script)
+            loadComments();
+
+            // Comment Form Functionality
+            document.getElementById("commentForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const commentInput = document.getElementById("commentInput");
+                const commentText = commentInput.value.trim();
+
+                if (commentText) {
+                    saveCommentToGoogleSheets(commentText);
+                    commentInput.value = ""; // Clear the input field
+                }
+            });
+
+            // ✅ Save comment to Google Sheets with timestamp
+            function saveCommentToGoogleSheets(comment) {
+                fetch('https://script.google.com/macros/s/AKfycbyrxdm_leX-M4Hd718EJo4Eiq6BjUmKb5jlkTEal3mYLgL9iB-MlQ-fE8alf2bgoF9PRw/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `comment=${encodeURIComponent(comment)}`
+                })
+                    .then(response => response.json()) // Parse JSON response
+                    .then(data => {
+                        console.log('Comment saved:', data);
+                        displayComment(data.comment, data.timestamp);
+                    })
+                    .catch(error => {
+                        console.error('Error saving comment:', error);
+                    });
             }
-        }, { once: true });
-    </script>
 
+            // ✅ Display comment with properly formatted timestamp
+            function displayComment(comment, timestamp) {
+                const commentsDisplay = document.getElementById("commentsDisplay");
+                const commentElement = document.createElement("div");
+                commentElement.classList.add("comment");
+
+                // Ensure timestamp is formatted correctly
+                let formattedDate = "Invalid Date";
+                if (timestamp) {
+                    const dateObj = new Date(timestamp);
+                    if (!isNaN(dateObj.getTime())) {
+                        formattedDate = dateObj.toLocaleString(); // Convert to readable format
+                    }
+                }
+
+                // Avatar placeholder (replace with actual avatar URL if available)
+                const avatarUrl = "images/2.jpeg"; // Placeholder image URL
+
+                // Comment HTML structure with avatar
+                commentElement.innerHTML = `
+        <div class="comment-avatar">
+            <img  class="img-avatar" src="${avatarUrl}" alt="User Avatar">
+        </div>
+        <div class="comment-content">
+            <div class="comment-header">
+                <h4>Username</h4> <!-- Replace with actual username if available -->
+                <span>${formattedDate}</span>
+            </div>
+            <p class="comment-text">${comment}</p>
+            <div class="comment-actions">
+                <button>Reply</button>
+                <button>Like</button>
+            </div>
+        </div>
+    `;
+
+                commentsDisplay.appendChild(commentElement);
+            } F
+
+            // ✅ Load comments from Google Sheets with timestamps
+            function loadComments() {
+                fetch('https://script.google.com/macros/s/AKfycbyrxdm_leX-M4Hd718EJo4Eiq6BjUmKb5jlkTEal3mYLgL9iB-MlQ-fE8alf2bgoF9PRw/exec')
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(comment => {
+                            displayComment(comment.text, comment.timestamp);
+                        });
+                    })
+                    .catch(error => {
+                        console.error("Error loading comments:", error);
+                    });
+            }
+        });
+    </script>
 
 
 </body>
