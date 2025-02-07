@@ -21,7 +21,7 @@
                 <div class="container">
                     <!-- Audio Cards -->
                     <input type="radio" name="slide" id="c1" checked>
-                    <label for="c1" class="card" data-audio="images/audio1.mp3">
+                    <label for="c1" class="card" data-audio="Ranzot/images/audio1.mp3">
                         <div class="row">
                             <div class="icon">1</div>
                             <div class="description mt-2">
@@ -32,7 +32,7 @@
                     </label>
 
                     <input type="radio" name="slide" id="c2">
-                    <label for="c2" class="card" data-audio="images/audio2.mp3">
+                    <label for="c2" class="card" data-audio="Ranzot/images/audio2.mp3">
                         <div class="row">
                             <div class="icon">2</div>
                             <div class="description mt-2">
@@ -43,7 +43,7 @@
                     </label>
 
                     <input type="radio" name="slide" id="c3">
-                    <label for="c3" class="card" data-audio="images/audio3.mp3">
+                    <label for="c3" class="card" data-audio="Ranzot/images/audio3.mp3">
                         <div class="row">
                             <div class="icon">3</div>
                             <div class="description mt-2">
@@ -54,7 +54,7 @@
                     </label>
 
                     <input type="radio" name="slide" id="c4">
-                    <label for="c4" class="card" data-audio="images/audio4.mp3">
+                    <label for="c4" class="card" data-audio="Ranzot/images/audio4.mp3">
                         <div class="row">
                             <div class="icon">4</div>
                             <div class="description mt-2">
@@ -65,7 +65,7 @@
                     </label>
 
                     <input type="radio" name="slide" id="c5">
-                    <label for="c5" class="card" data-audio="images/audio5.mp3">
+                    <label for="c5" class="card" data-audio="Ranzot/images/audio5.mp3">
                         <div class="row">
                             <div class="icon">5</div>
                             <div class="description mt-2">
@@ -76,7 +76,7 @@
                     </label>
 
                     <input type="radio" name="slide" id="c6">
-                    <label for="c6" class="card" data-audio="images/audio6.mp3">
+                    <label for="c6" class="card" data-audio="Ranzot/images/audio6.mp3">
                         <div class="row">
                             <div class="icon">6</div>
                             <div class="description mt-2">
@@ -221,7 +221,8 @@
     `;
 
                 commentsDisplay.appendChild(commentElement);
-            }
+            } 
+
             // ✅ Load comments from Google Sheets with timestamps
             function loadComments() {
                 fetch('https://script.google.com/macros/s/AKfycbyrxdm_leX-M4Hd718EJo4Eiq6BjUmKb5jlkTEal3mYLgL9iB-MlQ-fE8alf2bgoF9PRw/exec')
